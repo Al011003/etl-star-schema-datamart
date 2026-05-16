@@ -1,0 +1,4 @@
+--production ready data warehouse using star schema
+--implement proper dat amodeling with fact table , dimension table, and bridge table
+--you will cretae specialized mart optimized for different analytical use cases
+--you will develop automated build script that can rebuild your entire pipeline with one command
