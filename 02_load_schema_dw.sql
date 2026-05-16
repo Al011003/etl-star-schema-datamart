@@ -48,3 +48,29 @@ SELECT skill_id, job_id
 FROM read_csv('https://storage.googleapis.com/sql_de/skills_job_dim.csv', 
     AUTO_DETECT=true,
     HEADER=true);
+
+
+-- Verify data was loaded correctly
+SELECT 'Company Dimendion' AS table_name, COUNT(*) record_count FROM company_dim
+UNION ALL
+SELECT 'Skills Dimension', COUNT(*) FROM skills_dim
+UNION ALL
+SELECT 'Job Posting Facts', COUNT(*) FROM job_postings_fact
+UNION ALL
+SELECT 'Skill Job Bridge', COUNT(*) FROM skills_job_dim;
+
+SELECT '======= COMPANY DIMENSION TABLE =======' AS info;
+SELECT * FROM company_dim
+LIMIT 5;
+
+SELECT '======= SKILL DIMENSION TABLE =======' AS info;
+SELECT * FROM skills_dim
+LIMIT 5;
+
+SELECT '======= JOB POSTING FACT TABLE =======' AS info;
+SELECT * FROM job_postings_fact
+LIMIT 5;
+
+SELECT '======= SKILL JOB BRIDGE TABLE =======' AS info;
+SELECT * FROM skills_job_dim
+LIMIT 5;
