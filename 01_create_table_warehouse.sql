@@ -61,5 +61,3 @@ CREATE TABLE skills_job_dim (
 SELECT table_name
 FROM information_schema.tables
 WHERE table_schema ='main';
-
-SHOW TABLES;
