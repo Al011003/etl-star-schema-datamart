@@ -50,6 +50,27 @@ FROM read_csv('https://storage.googleapis.com/sql_de/skills_job_dim.csv',
     HEADER=true);
 
 
+-- Verify referential integrity (should return 0 for all queries)
+SELECT '=== Referential Integrity Check ===' AS info;
+SELECT 
+    'Orphaned company_ids in job_postings_fact' AS check_type,
+    COUNT(*) AS orphaned_count
+FROM job_postings_fact 
+WHERE company_id NOT IN (SELECT company_id FROM company_dim);
+
+SELECT 
+    'Orphaned skill_ids in skills_job_dim' AS check_type,
+    COUNT(*) AS orphaned_count
+FROM skills_job_dim 
+WHERE skill_id NOT IN (SELECT skill_id FROM skills_dim);
+
+SELECT 
+    'Orphaned job_ids in skills_job_dim' AS check_type,
+    COUNT(*) AS orphaned_count
+FROM skills_job_dim 
+WHERE job_id NOT IN (SELECT job_id FROM job_postings_fact);
+
+
 -- Verify data was loaded correctly
 SELECT 'Company Dimendion' AS table_name, COUNT(*) record_count FROM company_dim
 UNION ALL
