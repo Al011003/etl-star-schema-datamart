@@ -11,3 +11,9 @@
 
 --step 4: DW -  make skills mart
 .read 04_create_skills_mart.sql
+
+--step 5: DW - make priority mart
+.read 05_create_priority_mart.sql
+
+--step 6: DW - udpated priority role
+.read 06_updated_priority_mart.sql
