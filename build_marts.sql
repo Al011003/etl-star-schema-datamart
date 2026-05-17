@@ -17,3 +17,6 @@
 
 --step 6: DW - udpated priority role
 .read 06_updated_priority_mart.sql
+
+--step 7: DW - make data mart for company
+.read 07_create_company_mart.sql
